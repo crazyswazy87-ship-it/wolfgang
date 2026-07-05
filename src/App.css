@@ -1732,7 +1732,7 @@ FROM BITH
   align-items: center;
   margin-top: auto;
   justify-content: space-around;
-  position: relative;
+  position: absolute;
 
 }
 
