@@ -1692,7 +1692,7 @@ FROM BITH
   align-items: center;
   text-align: center;
   justify-content: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.9px;
   }
 }
 
@@ -2750,7 +2750,7 @@ FROM BITH
 }
 
 .search-input {
-  width: min(500px, 90%);
+  width: min(200px, 90%);
   padding: 14px 18px;
   border: 1px solid #333;
   border-radius: 50px;
@@ -2779,5 +2779,9 @@ FROM BITH
     text-align:center;
     margin:40px 0;
     color:#999;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: absolute;
     font-size:18px;
 }
