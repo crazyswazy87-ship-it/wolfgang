@@ -67,7 +67,7 @@ const demoItems = [
   {
     link: "/catalogue",
     text: "WOLFGNG shirts",
-    image: ``,
+    image: tshoImg,
   },
   {
     link: "/catalogue",

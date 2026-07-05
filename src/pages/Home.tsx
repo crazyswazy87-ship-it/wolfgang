@@ -21,6 +21,9 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [merchs, setMerchs] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [search, setSearch] = useState("");
 
    const itemsz = [
   {
@@ -38,6 +41,8 @@ const Home = () => {
 ];
 
 const loadProducts = async () => {
+  setLoading(true);
+
   try {
     const response = await databases.listDocuments(
       DATABASE_ID,
@@ -48,6 +53,8 @@ const loadProducts = async () => {
     setMerchs(response.documents as Product[]);
   } catch (error) {
     console.error(error);
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -55,6 +62,11 @@ useEffect(() => {
   void loadProducts();
 }, []);
 
+const filteredMerchs = merchs.filter(
+  (merch) =>
+    merch.name.toLowerCase().includes(search.toLowerCase()) ||
+    merch.price.includes(search)
+);
 
 
   return (
@@ -79,9 +91,35 @@ useEffect(() => {
         initialLoadAnimation={false}
       />      
 
-      {merchs.map((merch, i) => (
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
+      {loading
+  ? Array.from({ length: 4 }).map((_, i) => (
       <div className={`sauti item-${i}`} key={i}>
-        
+        <div className="product-loader-image shimmer"></div>
+
+        <div className="santan">
+          <div className="product-loader-price shimmer"></div>
+          <div className="product-loader-name shimmer"></div>
+        </div>
+
+        <div className="berbique">
+          <div className="product-loader-icon shimmer"></div>
+
+          <div className="product-loader-button shimmer"></div>
+        </div>
+      </div>
+    ))
+  : filteredMerchs.map((merch, i) => (
+      <div className={`sauti item-${i}`} key={merch.$id}>
         <img
           src={merch.image}
           alt={merch.name}
@@ -120,26 +158,25 @@ useEffect(() => {
         </div>
 
         <div className="berbique">
-          <Link 
-              to={'/wolfgng'} 
-              className="pain">
-              <img 
-                src={abt}
-                alt="wolfgng"
-                height={30}
-                width={30}
-                className="waba"
-              />
+          <Link to="/wolfgng" className="pain">
+            <img
+              src={abt}
+              alt="wolfgng"
+              height={30}
+              width={30}
+              className="waba"
+            />
           </Link>
 
-          <button 
-            className="shugli">
-            <Link 
-              to={'https://www.instagram.com/wolf_gng5?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='} 
-              className="pain">
-              Checkout 
+          <button className="shugli">
+            <Link
+              to="https://www.instagram.com/wolf_gng5?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              className="pain"
+            >
+              Checkout
             </Link>
-            <img 
+
+            <img
               src={danski}
               alt="cart"
               height={25}
@@ -147,9 +184,14 @@ useEffect(() => {
             />
           </button>
         </div>
-
       </div>
-      ))}
+    ))}
+
+    {!loading && filteredMerchs.length === 0 && (
+      <div className="no-products">
+        No products found.
+      </div>
+    )}
 
     </div>
   )
