@@ -1707,6 +1707,7 @@ FROM BITH
   padding: 5px;
   display: flex;
   align-items: center;
+  position: relative;
   flex-direction: column;
 }
 
@@ -1729,6 +1730,7 @@ FROM BITH
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: auto;
   justify-content: space-around;
   position: relative;
 
