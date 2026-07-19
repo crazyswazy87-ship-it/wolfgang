@@ -165,7 +165,7 @@ const subscribe = async () => {
         text="Premium apparel for those who choose growth over comfort"
         speed={2}
         delay={0}
-        color="#b5b5b5"
+        color="#000"
         shineColor="#ffffff"
         spread={120}
         direction="left"
