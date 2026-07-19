@@ -1,4 +1,5 @@
 import type { Product } from "../data/types";
+import BlurImage from "./shared/BlurImage";
 
 
 export interface ProductCardProps {
@@ -27,11 +28,10 @@ export function ProductCard({
       aria-label={`${product.name} — ${formatPrice(product.price)}`}
     >
       <div className="imageWrap">
-        <img
-          className="image"
+        <BlurImage
           src={product.image}
           alt={product.name}
-          loading="lazy"
+          className="w-full h-full rounded-xl"
         />
 
         {product.isNew && <span className="badge">New</span>}
