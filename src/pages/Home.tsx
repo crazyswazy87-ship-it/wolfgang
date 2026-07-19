@@ -25,20 +25,6 @@ const Home = () => {
 
   const [search, setSearch] = useState("");
 
-   const itemsz = [
-  {
-    label: "About",
-    target: "about",
-  },
-  {
-    label: "Catalogue",
-    target: "catalogue",
-  },
-  {
-    label: "Contact",
-    target: "socials",
-  }
-];
 
 const loadProducts = async () => {
   setLoading(true);
@@ -67,6 +53,9 @@ const filteredMerchs = merchs.filter(
     merch.name.toLowerCase().includes(search.toLowerCase()) ||
     merch.price.includes(search)
 );
+
+const [loaded, setLoaded] = useState(false);
+
 
 
   return (
@@ -120,12 +109,19 @@ const filteredMerchs = merchs.filter(
     ))
   : filteredMerchs.map((merch, i) => (
       <div className={`sauti item-${i}`} key={merch.$id}>
-        <img
+        <div className="sauti">
+          {!loaded && (
+            <div className="absolute inset-0 animate-pulse bg-zinc-800 rounded-xl" />
+          )}
+
+          <img
           src={merch.image}
           alt={merch.name}
           onClick={() => navigate("/catalogue")}
           className="kanye"
+          
         />
+        </div>
 
         <div className="santan">
           <ShinyText

@@ -7,46 +7,29 @@ import { motion } from "framer-motion";
 import CardNav from "../components/CardNav";
 import logo from "../../public/assets/wolff.png"
 //import Shuffle from "../components/Shuffle";
-import FlowingMenu from "../components/FlowingMenu";
+//import FlowingMenu from "../components/FlowingMenu";
 import CircularText from "../components/CircularText";
 import ScrollStack, { ScrollStackItem } from "../components/ScrollStack";
 import bra from "../../public/assets/wolff.png"
 import sub from "../../public/assets/pack.png"
 import { Link, useNavigate } from "react-router-dom";
 import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
-import Masonry from "../components/Masonry";
+//import Masonry from "../components/Masonry";
 import { useState } from "react";
 import { DATABASE_ID, databases, ID, WAITLIST_COLLECTION_ID } from "../components/lib/appwrite";
 import { toast } from "react-toastify";
 
-import shirtImg from "../../public/assets/t-sho.png";
-import tshirtImg from "../../public/assets/swaet.png"
-import sweatImg from "../../public/assets/sweaty.png"
-import tshoImg from "../../public/assets/combato.png"
-import shotImg from "../../public/assets/ty-ty.png"
-import combImg from "../../public/assets/trao.png"
-import verdImg from "../../public/assets/t-sho-ty.png"
-import nemImg from "../../public/assets/combat.png"
 
-import CircularGallery from "../components/CircularGallery";
-import ChromaGrid from "../components/ChromaGrid";
+import CategoriesSection from "../sections/CategoriesSection";
+import FeaturedProductsSection from "../sections/FeaturedProducts";
+import type { Product } from "../data/types";
+import NewArrivalsSection from "../sections/NewArrivalsSection";
 
-const HomePage = () => {
 
-  const handleScroll = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
+export interface HomePageProps {
+  onAddToCart?: (product: Product) => void;
+}
 
-  const navigate = useNavigate();
-   //variable proximity
- //const containerRef = useRef(null);
-
- 
-
- //Topbar
 const itemsz = [
   {
     label: "About",
@@ -62,110 +45,21 @@ const itemsz = [
   }
 ];
 
-  //Flowing Menu
-const demoItems = [
-  {
-    link: "/catalogue",
-    text: "WOLFGNG shirts",
-    image: tshoImg,
-  },
-  {
-    link: "/catalogue",
-    text: "WOLFGNG Pants",
-    image: ``,
-  },
-  {
-    link: "/catalogue",
-    text: "WOLFGNG T-Shirts",
-    image: '',
-  },
-  {
-    link: "/catalogue",
-    text: "WOLFGNG T-Shirts",
-    image: ``,
-  },
-];
 
-// Masonry
-const itex = [
-    {
-      id: "1",
-      img: shirtImg,
-      url: "",
-      height: 340,
-    },
-    {
-      id: "2",
-      img: tshoImg,
-      url: "",
-      height: 150,
-    },
-    {
-      id: "3",
-      img: tshirtImg,
-      url: "",
-      height: 200,
-    },
-    {
-      id: "4",
-      img: combImg,
-      url: "",
-      height: 550,
-    },
-    {
-      id: "5",
-      img: sweatImg,
-      url: "",
-      height: 350,
-    },
-    {
-      id: "6",
-      img: shotImg,
-      url: "",
-      height: 200,
-    },
-    // ... more items
-];
+const HomePage = ({ onAddToCart }: HomePageProps) => {
 
-  //chromagrid
-  const itemc = [
-  {
-    image: shirtImg,
-    title: "WolfGng",
-    subtitle: "Wolf Gang Collection",
-    handle: "@sarahjohnson",
-    borderColor: "#3B82F6",
-    gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "#"
-  },
-  {
-    image: verdImg,
-    title: "Mr Abdifatar",
-    subtitle: "Wolf Gang Collection",
-    handle: "@mikechen",
-    borderColor: "#10B981",
-    gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "#"
-  },
-  {
-    image: nemImg,
-    title: "Mr Abdifatar",
-    subtitle: "Wolf Gang Collection",
-    handle: "@sarahjohnson",
-    borderColor: "#3B82F6",
-    gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "#"
-  },
-  {
-    image: combImg,
-    title: "WOLFGNG",
-    subtitle: "Wolf Gang Collection",
-    handle: "@mikechen",
-    borderColor: "#10B981",
-    gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "#"
+  const handleScroll = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
   }
-];
+};
+
+  const navigate = useNavigate();
+   //variable proximity
+ //const containerRef = useRef(null);
+
+
 
 
 const [email, setEmail] = useState("");
@@ -283,22 +177,9 @@ const subscribe = async () => {
 
   <div className="genje"> 
 
-    <span className="uzi">
-        New Arrivals
-    </span>
-
-    <CircularGallery
-    bend={1}
-    textColor="#ffffff"
-    borderRadius={0.05}
-    scrollEase={0.05}
-    fontUrl="https://use.typekit.net/ahp5teq.css"
-    font="bold 30px Orbitron"
-    scrollSpeed={2}
-    />
-
-
-
+    <NewArrivalsSection />
+    <CategoriesSection />
+      
     {/*circular text*/}
     <CircularText
       text="**WOLF***GNG**"
@@ -315,62 +196,8 @@ const subscribe = async () => {
       </button>
     </div>
     
-    
-     {/*Flowing menu */}
-    <div className="manoseti">
-      <span className="uzi">
-        Categories
-      </span>
+    <FeaturedProductsSection  />
 
-
-      <FlowingMenu 
-      items={demoItems}
-      speed={8}
-      textColor="#ffffff"
-      bgColor="#120F17"
-      marqueeBgColor="#ffffff"
-      marqueeTextColor="#120F17"
-      borderColor="#ffffff"
-    />
-    </div>
-
-    {/*shop */}
-
-    {/*Circular gallery */}
-    <section id="catalogue" className="bizi">
-      
-        <span className="uzi">
-          Our Collections
-        </span>
-
-          {/*Masonry */}
-          <Masonry
-          items={itex}
-          ease="power3.out"
-          duration={1.1}
-          stagger={0.14}
-          animateFrom="bottom"
-          scaleOnHover
-          hoverScale={0.95}
-          blurToFocus
-          colorShiftOnHover
-        />
-      
-    </section>
-
-    <section id="featured" className="kiminim">
-       <span className="uzi">
-        Our Featured Products
-      </span>
-
-      <ChromaGrid 
-        items={itemc}
-        radius={300}
-        damping={0.45}
-        fadeOut={0.6}
-        ease="power3.out"
-      />
-    </section>
 
     <div className="kartelo">
       {/*Scroll Stack */}

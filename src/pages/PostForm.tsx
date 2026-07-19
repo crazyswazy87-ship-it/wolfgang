@@ -33,6 +33,9 @@ export default function PostForm() {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [isNew, setIsNew] = useState(false);
+  const [featured, setFeatured] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +43,7 @@ export default function PostForm() {
 
 
   const createPost = async () => {
-  if (!name || !price || !image) {
+  if (!name || !price || !category || !image) {
     toast.error("Fill in all fields");
     return;
   }
@@ -59,8 +62,6 @@ export default function PostForm() {
       uploaded.$id
     );
 
-    console.log(imageUrl.toString());
-
     await databases.createDocument(
       DATABASE_ID,
       PRODUCT_COLLECTION_ID,
@@ -69,6 +70,9 @@ export default function PostForm() {
         name,
         image: imageUrl.toString(),
         price,
+        category,
+        isNew,
+        featured,
       }
     );
 
@@ -76,6 +80,9 @@ export default function PostForm() {
 
     setName("");
     setPrice("");
+    setCategory("");
+    setIsNew(false);
+    setFeatured(false);
     setImage(null);
 
     await loadProducts();
@@ -125,6 +132,9 @@ export default function PostForm() {
     }
   };
 
+  const [loaded, setLoaded] = useState(false);
+  
+
   return (
     <div className="home-cony">
       {/*Pill Nav*/}
@@ -171,6 +181,36 @@ export default function PostForm() {
           value={price}
           onChange={(e)=>setPrice(e.target.value)}
         />
+
+        <select
+          className="siker"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="">Select Category</option>
+          <option value="Tshirts">T-Shirts</option>
+          <option value="Shirts">Shirts</option>
+          <option value="Sweat Shirts">Sweat Shirts</option>
+          <option value="Trousers">Trousers</option>
+        </select>
+
+        <label className="check-row">
+          <input
+            type="checkbox"
+            checked={isNew}
+            onChange={(e) => setIsNew(e.target.checked)}
+          />
+          New Arrival
+        </label>
+
+        <label className="check-row">
+          <input
+            type="checkbox"
+            checked={featured}
+            onChange={(e) => setFeatured(e.target.checked)}
+          />
+          Featured Product
+        </label>
 
         <input
           type="file"
