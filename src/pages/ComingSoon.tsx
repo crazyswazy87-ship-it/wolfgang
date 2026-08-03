@@ -5,6 +5,7 @@ import { DATABASE_ID, databases, ID, WAITLIST_COLLECTION_ID } from "../component
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import intro from "../../public/assets/wollf.png"
 
 export default function ComingSoon() {
 
@@ -55,13 +56,11 @@ export default function ComingSoon() {
     <div className="coming-page">
 
       <div className="b7-hero">
-        <div className="circle circle-left"></div>
-        <div className="circle circle-right"></div>
-        <div className="circle circle-bottom"></div>
-
-        <div className="house">
-          <div className="dot"></div>
-        </div>
+        <img 
+          src={intro}
+          alt="WOLF GNG"
+          className="indaa"
+        />
       </div>
 
       <section className="content">
