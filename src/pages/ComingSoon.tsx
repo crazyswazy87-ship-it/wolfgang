@@ -46,7 +46,7 @@ export default function ComingSoon() {
 
   } catch (error) {
     console.error(error);
-    toast.error("Something went wrong try inputing another email");
+    toast.error("Something went wrong try using another email");
   } finally {
     setLoading(false);
   }
