@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.coming-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, sans-serif;
+}
+
+/* Password */
+
+.password-bar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ececec;
+}
+
+.password-bar button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #42cde2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+/* Hero */
+
+.b7-hero {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  background: #7f7f7f;
+}
+
+/* Background circles */
+
+.circle {
+  position: absolute;
+  background: #000;
+  border-radius: 50%;
+}
+
+.circle-left {
+  width: 260px;
+  height: 260px;
+  left: -120px;
+  bottom: -30px;
+}
+
+.circle-right {
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -20px;
+}
+
+.circle-bottom {
+  width: 240px;
+  height: 240px;
+  right: -120px;
+  bottom: -60px;
+}
+
+/* House */
+
+.house {
+  position: absolute;
+  width: 210px;
+  height: 230px;
+  background: #555;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.house::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: -105px;
+
+  border-left: 105px solid transparent;
+  border-right: 105px solid transparent;
+  border-bottom: 105px solid #555;
+}
+
+.dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Content */
+
+.content {
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 46px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  letter-spacing: 1px;
+  color: #111;
+}
+
+.content p {
+  margin-top: 22px;
+  color: #6b6b6b;
+  font-size: 20px;
+}
+
+/* Email */
+
+.email-form {
+  margin-top: 40px;
+  display: flex;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.email-form input {
+  flex: 1;
+  border: none;
+  padding: 18px;
+  font-size: 17px;
+  outline: none;
+}
+
+.email-form button {
+  width: 65px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.email-form button:hover {
+  background: #f6f6f6;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+
+  .house {
+    width: 180px;
+    height: 210px;
+  }
+
+  .house::before {
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 90px solid #555;
+    top: -90px;
+  }
+
+  .content h1 {
+    font-size: 40px;
+  }
+
+  .content p {
+    font-size: 17px;
+  }
+}

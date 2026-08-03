@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify'
 import HomePage from './pages/HomePage'
 import PostForm from './pages/PostForm'
 import About from './pages/About'
+import ComingSoon from './pages/ComingSoon'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <ToastContainer />
     
     <Routes>
-      <Route path='/' element={<HomePage />} />
+      <Route path='/home' element={<HomePage />} />
       <Route path="/wolfgng" element={<Home />} />
       <Route path="/post" element={<PostForm />} />
       <Route path="/andime" element={<Admin />} />
@@ -24,6 +25,7 @@ function App() {
       <Route path="/catalogue" element={<Catalogue />} />
       <Route path="/refund" element={<RefundPolicy />} />
       <Route path="/terms" element={<TermsAndConditions />} /> 
+      <Route path="/" element={<ComingSoon />} /> 
     </Routes>
     </>
   )
