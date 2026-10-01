@@ -64,10 +64,10 @@ export default function ComingSoon() {
       </div>
 
       <section className="content">
-        <h1>OPENING SOON</h1>
+        <h1>WOLF GANG</h1>
 
          <ShinyText
-            text="Be the first to know when we launch."
+            text="Join the Pack."
             speed={3}
             delay={0}
             color="#000"
