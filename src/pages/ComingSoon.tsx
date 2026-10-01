@@ -67,7 +67,7 @@ export default function ComingSoon() {
         <h1>WOLF GANG</h1>
 
          <ShinyText
-            text="Join the Pack"
+            text="Join the Pack."
             speed={3}
             delay={0}
             color="#000"
